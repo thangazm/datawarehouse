@@ -1,0 +1,2412 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/30/2019 12:25:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="THANGA"
+  DTS:CreatorName="Thanga\ThangaMH"
+  DTS:DTSID="{6D08C409-20CE-4C0E-A800-A1CC64107796}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SCD3"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{C8974040-6BF5-459D-A16B-2A48339F66BB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CB12D22D-8D49-4CFD-9080-D7C5A920D2E2}"
+      DTS:ObjectName="THANGA\SQLTHANGA.dw_cw_db">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=THANGA\SQLTHANGA;Initial Catalog=dw_cw_db;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SCD 3 DIM Customer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{24039BCE-B877-47D3-B6A4-AB9E26349EF6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SCD 3 DIM Customer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SCD 3 DIM Customer\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Output].Columns[current_city]"
+                      dataType="wstr"
+                      description="current_city"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Output].Columns[current_city]"
+                      name="current_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)("Expired")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)("Expired")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Output].Columns[current_city]"
+                      dataType="wstr"
+                      description="current_city"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Output].Columns[current_city]"
+                      name="current_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)("Current")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)("Current")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DIM_Customer_scd_3]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCD 3 DIM Customer\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  connectionManagerRefId="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_alt_id]"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[name]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[address]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="address"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[address]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[state]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[city]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[country]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[segment_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="segment_name"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[segment_name]"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[segment_name]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].Columns[current_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="current_city"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[current_city]"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Output].Columns[current_city]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_alt_id]"
+                      dataType="wstr"
+                      length="100"
+                      name="customer_alt_id" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      dataType="wstr"
+                      length="100"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="50"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[segment_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="segment_name" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[current_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="current_city" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[segment_seg_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="segment_seg_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[segment_seg_id]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="customer_id"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[address]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="address"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[address]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="state"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="city"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="country"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Right Input].Columns[seg_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seg_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output].Columns[seg_id]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Right Input].Columns[segment_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="segment_name"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output].Columns[segment_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[customer_id]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[customer_id]"
+                      name="customer_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[customer_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[name]"
+                      name="name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[address]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[address]"
+                      name="address">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[address]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[state]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[state]"
+                      name="state">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[state]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[city]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[city]"
+                      name="city">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[city]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[country]"
+                      name="country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[segment_name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[segment_name]"
+                      name="segment_name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Right Input].Columns[segment_name]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[DIM_Customer_scd_3] SET [current_city] = ? WHERE [customer_alt_id] = ? AND [current_city] = 'Current'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCD 3 DIM Customer\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  connectionManagerRefId="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input].Columns[current_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="current_city"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Output].Columns[current_city]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="100"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [city], [customer_alt_id],[current_city] FROM [dbo].[DIM_Customer_scd_3]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[current_city] = 'Current'</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  connectionManagerRefId="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[city]"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[city]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_alt_id]"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[customer_alt_id]"
+                      dataType="wstr"
+                      length="100"
+                      name="customer_alt_id" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[current_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="current_city" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Sort Customer"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Customer"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="customer_id"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input].Columns[address]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="address"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[address]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="state"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[state]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="city"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[city]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="country"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input].Columns[segment_seg_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="segment_seg_id"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[segment_seg_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[customer_id]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[customer_id]"
+                      name="customer_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[customer_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[name]"
+                      name="name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[address]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[address]"
+                      name="address">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[address]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[state]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[state]"
+                      name="state">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[state]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[city]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[city]"
+                      name="city">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[city]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[country]"
+                      name="country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[segment_seg_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output].Columns[segment_seg_id]"
+                      name="segment_seg_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[segment_seg_id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Sort Segment"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Segment"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Sort Segment.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Segment.Inputs[Sort Input].Columns[seg_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="seg_id"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[seg_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Segment.Inputs[Sort Input].Columns[segment_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="segment_name"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[segment_name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output].Columns[seg_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output].Columns[seg_id]"
+                      name="seg_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[seg_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output].Columns[segment_name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output].Columns[segment_name]"
+                      name="segment_name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[segment_name]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Source Customer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source Customer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCD 3 DIM Customer\Source Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  connectionManagerRefId="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[address]"
+                      name="address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[segment_seg_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[segment_seg_id]"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].Columns[segment_seg_id]"
+                      name="segment_seg_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="wstr"
+                      length="100"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      dataType="wstr"
+                      length="100"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="50"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output].ExternalColumns[segment_seg_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="segment_seg_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[address]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[address]"
+                      name="address" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[state]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[segment_seg_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[segment_seg_id]"
+                      name="segment_seg_id" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Source Segment"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source Segment"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Customer_segment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SCD 3 DIM Customer\Source Segment.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  connectionManagerRefId="Package.ConnectionManagers[THANGA\SQLTHANGA.dw_cw_db]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[seg_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].ExternalColumns[seg_id]"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[seg_id]"
+                      name="seg_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[segment_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].ExternalColumns[segment_name]"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].Columns[segment_name]"
+                      name="segment_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].ExternalColumns[seg_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="seg_id" />
+                    <externalMetadataColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output].ExternalColumns[segment_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="segment_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[seg_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[seg_id]"
+                      name="seg_id" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[segment_name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[segment_name]"
+                      name="segment_name" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SCD 3 DIM Customer\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="customer_id"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[customer_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1].Columns[address]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="address"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[address]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[address]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="state"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[state]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[state]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="city"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[city]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[city]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="country"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[country]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[country]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1].Columns[segment_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="segment_name"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[segment_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[segment_name]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="customer_id"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[customer_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="name"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2].Columns[address]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="address"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[address]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[address]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="state"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[state]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[state]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="city"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[city]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[city]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="country"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[country]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[country]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2].Columns[segment_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="segment_name"
+                      lineageId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output].Columns[segment_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[segment_name]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[customer_id]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[address]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[address]"
+                      name="address" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[state]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[city]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[segment_name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1].Columns[segment_name]"
+                      name="segment_name" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[Derived Column Output]"
+              endId="Package\SCD 3 DIM Customer\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\SCD 3 DIM Customer\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[Derived Column Output1]"
+              endId="Package\SCD 3 DIM Customer\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\SCD 3 DIM Customer\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[Historical Attribute Inserts Output]"
+              endId="Package\SCD 3 DIM Customer\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[Merge Join Output]"
+              endId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Merge Join Output"
+              startId="Package\SCD 3 DIM Customer\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[New Output]"
+              endId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\SCD 3 DIM Customer\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[OLE DB Command Output]"
+              endId="Package\SCD 3 DIM Customer\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\SCD 3 DIM Customer\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[OLE DB Source Output]"
+              endId="Package\SCD 3 DIM Customer\Sort Segment.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SCD 3 DIM Customer\Source Segment.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[OLE DB Source Output1]"
+              endId="Package\SCD 3 DIM Customer\Sort Customer.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SCD 3 DIM Customer\Source Customer.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[Sort Output]"
+              endId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\SCD 3 DIM Customer\Sort Segment.Outputs[Sort Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[Sort Output1]"
+              endId="Package\SCD 3 DIM Customer\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\SCD 3 DIM Customer\Sort Customer.Outputs[Sort Output]" />
+            <path
+              refId="Package\SCD 3 DIM Customer.Paths[Union All Output 1]"
+              endId="Package\SCD 3 DIM Customer\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\SCD 3 DIM Customer\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\SCD 3 DIM Customer"
+          TopLeft="296,67" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SCD 3 DIM Customer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\SCD 3 DIM Customer\Sort Customer"
+          TopLeft="25,107.5" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\SCD 3 DIM Customer\Sort Segment"
+          TopLeft="231.5,107.5" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\SCD 3 DIM Customer\Source Customer"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\SCD 3 DIM Customer\Source Segment"
+          TopLeft="225,5.5" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\SCD 3 DIM Customer\Merge Join"
+          TopLeft="238,209.5" />
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[Sort Output]"
+          TopLeft="303,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.3333333333334,60"
+              Start="0,0"
+              End="20.3333333333334,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="16.3333333333334,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.3333333333334,35.5623100303951"
+                    Point2="20.3333333333334,35.5623100303951"
+                    Point3="20.3333333333334,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="20.3333333333334,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[Sort Output1]"
+          TopLeft="98,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="184.666666666667,60"
+              Start="0,0"
+              End="184.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="180.666666666667,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="180.666666666667,35.5623100303951"
+                    Point2="184.666666666667,35.5623100303951"
+                    Point3="184.666666666667,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="184.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[OLE DB Source Output]"
+          TopLeft="303,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[OLE DB Source Output1]"
+          TopLeft="85,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13,60"
+              Start="0,0"
+              End="13,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="9.00000000000003,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.00000000000003,30"
+                    Point2="13,30"
+                    Point3="13,34" />
+                  <mssgle:LineSegment
+                    End="13,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="209,42"
+          Id="Package\SCD 3 DIM Customer\Slowly Changing Dimension"
+          TopLeft="198.5,311.5" />
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[Merge Join Output]"
+          TopLeft="303,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SCD 3 DIM Customer\Derived Column"
+          TopLeft="88.0000000000001,413.5" />
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[Historical Attribute Inserts Output]"
+          TopLeft="269.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.5,60"
+              Start="0,0"
+              End="-104.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2735042735043"
+                    Point2="0,24.2735042735043"
+                    Point3="-4,24.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-100.5,24.2735042735043" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100.5,24.2735042735043"
+                    Point2="-104.5,24.2735042735043"
+                    Point3="-104.5,28.2735042735043" />
+                  <mssgle:LineSegment
+                    End="-104.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-127.30638671875,29.2735042735043,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SCD 3 DIM Customer\OLE DB Command"
+          TopLeft="76.0000000000001,515.5" />
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[Derived Column Output]"
+          TopLeft="162,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\SCD 3 DIM Customer\Union All"
+          TopLeft="242.5,617.5" />
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[New Output]"
+          TopLeft="336.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.6666666666667,264"
+              Start="0,0"
+              End="-14.6666666666667,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,127.104705383637"
+                    Point2="0,131.104705383637"
+                    Point3="-4,131.104705383637" />
+                  <mssgle:LineSegment
+                    End="-10.6666666666667,131.104705383637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.6666666666667,131.104705383637"
+                    Point2="-14.6666666666667,131.104705383637"
+                    Point3="-14.6666666666667,135.104705383637" />
+                  <mssgle:LineSegment
+                    End="-14.6666666666667,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[OLE DB Command Output]"
+          TopLeft="159,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.166666666667,60"
+              Start="0,0"
+              End="125.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5301794453507"
+                    Point2="0,35.5301794453507"
+                    Point3="4,35.5301794453507" />
+                  <mssgle:LineSegment
+                    End="121.166666666667,35.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.166666666667,35.5301794453507"
+                    Point2="125.166666666667,35.5301794453507"
+                    Point3="125.166666666667,39.5301794453507" />
+                  <mssgle:LineSegment
+                    End="125.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SCD 3 DIM Customer\Derived Column 1"
+          TopLeft="221.5,719.5" />
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[Union All Output 1]"
+          TopLeft="303,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SCD 3 DIM Customer\Insert Destination"
+          TopLeft="221.5,821.5" />
+        <EdgeLayout
+          Id="Package\SCD 3 DIM Customer.Paths[Derived Column Output1]"
+          TopLeft="303,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SCD 3 DIM Customer\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{CB12D22D-8D49-4CFD-9080-D7C5A920D2E2}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DIM_Customer_scd_3]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[address]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;address&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[city]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;city&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[country]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;country&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[customer_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;customer_alt_id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[segment_name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;segment_name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[state]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;state&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn&gt;current_city&lt;/CurrentIndicatorColumn&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent&gt;Current&lt;/ValueCurrent&gt;
+  &lt;ValueExpired&gt;Expired&lt;/ValueExpired&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

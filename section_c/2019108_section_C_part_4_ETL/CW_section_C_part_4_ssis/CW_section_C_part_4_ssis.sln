@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "CW_section_C_part_4_ssis", "CW_section_C_part_4_ssis\CW_section_C_part_4_ssis.dtproj", "{B340F18E-F63F-4680-B852-49CAC94909FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B340F18E-F63F-4680-B852-49CAC94909FC}.Development|Default.ActiveCfg = Development
+		{B340F18E-F63F-4680-B852-49CAC94909FC}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDBB11B3-7505-4E28-9BB5-2D3662BC823B}
+	EndGlobalSection
+EndGlobal

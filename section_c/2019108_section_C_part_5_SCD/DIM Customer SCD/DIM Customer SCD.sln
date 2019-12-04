@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DIM Customer SCD", "DIM Customer SCD\DIM Customer SCD.dtproj", "{97A43526-FACA-40EF-A914-EA6667AFBEB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97A43526-FACA-40EF-A914-EA6667AFBEB6}.Development|Default.ActiveCfg = Development
+		{97A43526-FACA-40EF-A914-EA6667AFBEB6}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BE1702E-5D86-42FF-9CDC-6CCEF3D260F4}
+	EndGlobalSection
+EndGlobal
