@@ -13,6 +13,8 @@ CREATE TABLE sales
 -- insert into sales
 INSERT INTO sales VALUES('prod1',2017, 10000000)
 INSERT INTO sales VALUES('prod1',2017, 10000000)
+
+
 -- create trigger for dynamic years of sales
 CREATE TRIGGER trg_view
 ON dbo.sales
